@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BID 2026 | Disponibilidade de Equipamentos</title>
+<style>
+:root{--navy:#17324d;--navy2:#214a70;--yellow:#f2d21c;--bg:#f5f7fa;--card:#fff;--text:#18212f;--muted:#667085;--line:#dde3ea;--green:#2d7b57;--orange:#b96b17}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
+.wrap{max-width:1700px;margin:auto;padding:22px}.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:22px 26px;box-shadow:0 8px 24px rgba(24,59,91,.08)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.logos{display:flex;gap:12px;align-items:center}.logo{height:60px;min-width:150px;background:#fff;border-radius:12px;padding:8px 12px;display:flex;align-items:center;justify-content:center}.logo img{max-height:44px;max-width:160px}
+.hero h1{margin:18px 0 5px;font-size:28px}.hero p{margin:0;color:#dce7f0}.actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.sync{font-size:11px;font-weight:700;background:#e8f6ee;color:#246b43;border:1px solid #bfe3cc;padding:8px 10px;border-radius:999px}.refresh{border:0;background:var(--yellow);color:#17202b;font-weight:800;border-radius:9px;padding:10px 15px;cursor:pointer}.last{font-size:10px;color:#dce7f0}
+.filters{display:grid;grid-template-columns:1.1fr 1.2fr 1fr;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:15px}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:10px;text-transform:uppercase;font-weight:800;color:var(--muted)}select,input{height:42px;border:1px solid var(--line);border-radius:9px;padding:0 10px;background:#fff;font:inherit}
+.head{margin:22px 2px 10px}.head h2{margin:0;font-size:20px}.head p{margin:4px 0 0;font-size:12px;color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:12px}.kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;border-left:4px solid var(--navy);box-shadow:0 5px 16px rgba(24,59,91,.05)}.kpi:nth-child(2),.kpi:nth-child(3){border-left-color:var(--green)}.kpi:nth-child(4){border-left-color:var(--orange)}.kpi:nth-child(5){border-left-color:#2f357a}.label{font-size:10px;text-transform:uppercase;font-weight:800;color:var(--muted)}.value{font-size:30px;font-weight:900;margin-top:5px}.sub{font-size:11px;color:var(--muted);margin-top:3px}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));gap:12px}.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px;box-shadow:0 5px 16px rgba(24,59,91,.05);position:relative;overflow:hidden}.card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--navy)}.name{font-weight:850;font-size:15px;padding-left:5px}.group{font-size:10px;color:var(--muted);margin-top:3px;padding-left:5px}.available{font-size:34px;font-weight:900;color:var(--navy);margin:12px 0 2px;padding-left:5px}.available-label{font-size:11px;color:var(--muted);padding-left:5px}.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px}.mini{background:#f8fafc;border-radius:8px;padding:8px}.mini span{font-size:9px;color:var(--muted);display:block}.mini b{font-size:15px}.arrival{margin-top:10px;background:#f7f9fc;border:1px solid var(--line);border-radius:9px;padding:10px}.arrival span{display:block;font-size:9px;text-transform:uppercase;font-weight:800;color:var(--muted)}.arrival b{display:block;margin-top:3px;color:var(--navy)}.status{margin-top:9px;display:inline-block;font-size:10px;font-weight:800;background:#eef4f8;color:#355168;border-radius:999px;padding:5px 8px}
+.weeks{display:grid;grid-template-columns:repeat(13,minmax(70px,1fr));gap:7px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}.week{background:#f8fafc;border:1px solid var(--line);border-radius:9px;text-align:center;padding:9px}.week span{display:block;font-size:10px;color:var(--muted);font-weight:800}.week b{display:block;margin-top:4px;font-size:18px;color:var(--navy)}
+.empty{display:none;padding:28px;text-align:center;color:var(--muted)}.footer{font-size:11px;color:var(--muted);margin:14px 2px}
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.cards{grid-template-columns:repeat(2,1fr)}.weeks{grid-template-columns:repeat(7,1fr)}}@media(max-width:700px){.wrap{padding:10px}.filters,.kpis,.cards{grid-template-columns:1fr}.weeks{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<div class="top">
+<div class="logos">
+<div class="logo"><img src="https://www.rotagyn.com.br/wp-content/uploads/2024/07/logo-rotagyn-oficial.png" alt="RotaGyn"></div>
+<div class="logo"><img src="https://files.sunoresearch.com.br/n/uploads/2020/08/c1658109-mercado-livre.jpg" alt="Mercado Livre"></div>
+</div>
+<div class="actions"><span id="sync" class="sync">Conectando à planilha…</span><button id="refresh" class="refresh">↻ Atualizar dados</button><span id="last" class="last">Última atualização: —</span></div>
+</div>
+<h1>Disponibilidade e Previsão de Equipamentos · BID 2026</h1>
+<p>Visão executiva por locadora e local, com disponibilidade atual, envios programados e datas previstas de chegada.</p>
+</header>
+<section class="filters">
+<div class="field"><label>Locadora / Categoria</label><select id="gf"><option value="">Todas</option></select></div>
+<div class="field"><label>Local</label><select id="lf"><option value="">Todos os locais</option></select></div>
+<div class="field"><label>Busca</label><input id="q" placeholder="Pesquisar local ou status"></div>
+</section>
+<div class="head"><h2>Resumo da seleção</h2><p>Os indicadores são recalculados conforme os filtros.</p></div>
+<section class="kpis">
+<div class="kpi"><div class="label">QTD total</div><div id="k1" class="value">—</div><div class="sub">Planejamento total</div></div>
+<div class="kpi"><div class="label">Disponível</div><div id="k2" class="value">—</div><div class="sub">Disponibilidade atual</div></div>
+<div class="kpi"><div class="label">Em loco</div><div id="k3" class="value">—</div><div class="sub">Equipamentos no local</div></div>
+<div class="kpi"><div class="label">A ser enviado</div><div id="k4" class="value">—</div><div class="sub">Envios programados</div></div>
+<div class="kpi"><div class="label">Próximo pedido</div><div id="k5" class="value">—</div><div class="sub">Planejamento futuro</div></div>
+</section>
+<div class="head"><h2>Disponibilidade por local</h2><p>Quantidade atual, equipamentos a enviar e data prevista de chegada.</p></div>
+<section id="cards" class="cards"></section><div id="empty" class="empty">Nenhum local encontrado.</div>
+<div class="head"><h2>Previsibilidade semanal</h2><p>Consolidado entre W38 e W50 considerando os filtros atuais.</p></div>
+<section id="weeks" class="weeks"></section>
+<div class="footer">Fonte ao vivo: Google Sheets · aba QTD POR LOCAL · atualização automática a cada 5 minutos</div>
+</div>
+<script>
+const SID="1Cuxht8qsZWkzXSSrFA7yezBJQ-3TEkGz_2aXmsIfw8o",GID="167599081",REFRESH=300000;
+let DATA={groups:[]};
+const $=id=>document.getElementById(id),fmt=v=>new Intl.NumberFormat("pt-BR",{maximumFractionDigits:0}).format(Number(v)||0),esc=v=>String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+const num=v=>{if(typeof v==="number")return v;const n=Number(String(v??"").trim().replace(/\./g,"").replace(",","."));return Number.isFinite(n)?n:0};
+function parse(resp){
+if(!resp||resp.status!=="ok"||!resp.table)throw Error("Resposta inválida");
+const rows=resp.table.rows.map(r=>Array.from({length:25},(_,i)=>r.c&&r.c[i]&&r.c[i].v!=null?r.c[i].v:""));
+const names=new Set(["LM","TKS - Implantação","TKS - Substituição Casco","Vamos","EVM","Reservas técnica"]);let groups=[],cur=null,total=null;
+for(const r of rows){const name=String(r[0]??"").trim();if(!name)continue;if(name==="Total"){total=r;break}if(names.has(name)){cur={name,locals:[]};groups.push(cur);continue}if(cur&&name!=="Legenda"&&!["Equipamentos com o Técnico","Equipamento chega W39","Equipamento Retirada Geotab _ W39","Equipamento Retirada Geotab _ W41"].includes(name)){if(r.slice(1).some(v=>String(v??"").trim()&&String(v).trim()!=="-")){let weekly={};for(let i=0;i<13;i++)weekly["W"+(38+i)]=num(r[10+i]);cur.locals.push({local:name,qtd_total:num(r[3]),disponivel:num(r[4]),in_loco:num(r[5]),a_ser_enviado:num(r[6]),chegada:r[7]||"",proximo_pedido:num(r[8]),chegada_proximo:r[9]||"",weekly,total_pendente:num(r[23]),status:r[24]||"Sem status informado"})}}}
+groups=groups.filter(g=>g.name!=="Reservas técnica");if(!groups.length)throw Error("Estrutura não reconhecida");return{groups,total};
+}
+function load(){
+return new Promise((ok,fail)=>{const cb="cb"+Date.now(),s=document.createElement("script"),t=setTimeout(()=>{delete window[cb];s.remove();fail(Error("timeout"))},12000);window[cb]=r=>{clearTimeout(t);try{const d=parse(r);delete window[cb];s.remove();ok(d)}catch(e){fail(e)}};s.onerror=()=>fail(Error("conexão"));s.src=`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?gid=${GID}&headers=0&tqx=${encodeURIComponent("responseHandler:"+cb+";out:json")}&_=${Date.now()}`;document.head.appendChild(s)})
+}
+function filters(){const oldG=$("gf").value,oldL=$("lf").value;$("gf").innerHTML='<option value="">Todas</option>'+DATA.groups.map(g=>`<option>${esc(g.name)}</option>`).join("");if(DATA.groups.some(g=>g.name===oldG))$("gf").value=oldG;localOptions();if([...$("lf").options].some(o=>o.value===oldL))$("lf").value=oldL}
+function localOptions(){const g=$("gf").value,old=$("lf").value,ls=[...new Set(DATA.groups.filter(x=>!g||x.name===g).flatMap(x=>x.locals.map(y=>y.local)))].sort((a,b)=>a.localeCompare(b,"pt-BR"));$("lf").innerHTML='<option value="">Todos os locais</option>'+ls.map(x=>`<option>${esc(x)}</option>`).join("");if(ls.includes(old))$("lf").value=old}
+function selected(){const g=$("gf").value,l=$("lf").value,q=$("q").value.toLowerCase().trim();return DATA.groups.filter(x=>!g||x.name===g).map(x=>({...x,locals:x.locals.filter(y=>(!l||y.local===l)&&(!q||(`${x.name} ${y.local} ${y.status}`).toLowerCase().includes(q)))})).filter(x=>x.locals.length)}
+function render(){const gs=selected(),ls=gs.flatMap(g=>g.locals.map(x=>({...x,group:g.name}))),sum=k=>ls.reduce((a,x)=>a+(Number(x[k])||0),0);$("k1").textContent=fmt(sum("qtd_total"));$("k2").textContent=fmt(sum("disponivel"));$("k3").textContent=fmt(sum("in_loco"));$("k4").textContent=fmt(sum("a_ser_enviado"));$("k5").textContent=fmt(sum("proximo_pedido"));
+$("cards").innerHTML=ls.sort((a,b)=>b.disponivel-a.disponivel).map(x=>`<article class="card"><div class="name">${esc(x.local)}</div><div class="group">${esc(x.group)}</div><div class="available">${fmt(x.disponivel)}</div><div class="available-label">equipamentos disponíveis</div><div class="meta"><div class="mini"><span>Em loco</span><b>${fmt(x.in_loco)}</b></div><div class="mini"><span>A enviar</span><b>${fmt(x.a_ser_enviado)}</b></div><div class="mini"><span>Próx. pedido</span><b>${fmt(x.proximo_pedido)}</b></div></div><div class="arrival"><span>Chegada prevista dos equipamentos a serem enviados</span><b>${x.chegada?esc(x.chegada):"Sem data informada"}</b></div><div class="status">${esc(x.status)}</div></article>`).join("");$("empty").style.display=ls.length?"none":"block";
+let w={};for(let i=38;i<=50;i++)w["W"+i]=ls.reduce((a,x)=>a+(Number(x.weekly["W"+i])||0),0);$("weeks").innerHTML=Object.entries(w).map(([k,v])=>`<div class="week"><span>${k}</span><b>${fmt(v)}</b></div>`).join("")}
+async function sync(){const b=$("refresh");b.disabled=true;b.textContent="Atualizando...";$("sync").textContent="Consultando a planilha...";try{DATA=await load();filters();render();$("sync").textContent="Atualizado da planilha";$("sync").style.background="#e8f6ee";$("sync").style.color="#246b43";$("last").textContent="Última atualização: "+new Date().toLocaleString("pt-BR")}catch(e){$("sync").textContent="Falha ao atualizar";$("sync").style.background="#fff4df";$("sync").style.color="#8a5b00"}finally{b.disabled=false;b.textContent="↻ Atualizar dados"}}
+$("gf").addEventListener("change",()=>{localOptions();render()});$("lf").addEventListener("change",render);$("q").addEventListener("input",render);$("refresh").addEventListener("click",sync);sync();setInterval(sync,REFRESH);
+</script>
+</body></html>
